@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
 
