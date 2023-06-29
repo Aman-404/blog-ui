@@ -1,6 +1,5 @@
-
+import { Blog } from "@/components/Hero";
 import Link from "next/link";
-
 async function fetchBlogs() {
   const res = await fetch("http://localhost:3000/api/blog", {
     next: {
@@ -13,16 +12,10 @@ async function fetchBlogs() {
 
 export default async function Home() {
   const posts = await fetchBlogs();
-  console.log(posts);
-
   return (
-    <main className="w-full h-full">
-      <div className="md:w-2/4 sm:w-3/4 m-auto p-4 my-5 rounded-lg bg-slate-800 drop-shadow-xl">
-        <h1 className="text-slate-200 text-center text-2xl font-extrabold font-[verdana]">
-          My FULL STACK Blog App With Next.js
-        </h1>
-      </div>
-      {/* Link */}
+    <>
+    <Blog/>
+    <section className="text-gray-600 body-font">
       <div className="flex my-5">
         <Link
           href={"/blog/add"}
@@ -31,34 +24,35 @@ export default async function Home() {
           Add New Blog 🚀
         </Link>
       </div>
-      {/* Blogs */}
-      <div className="w-full flex  flex-col justify-center items-center">
-        {posts?.map((post: any) => (
-          <div className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-200 flex flex-col justify-center">
-            {/* Title and Action */}
-            <div className="flex items-center my-3">
-              <div className="mr-auto">
-                <h2 className="mr-auto font-semibold">{post.title}</h2>
+
+      <div className="container px-6 py-2 mx-auto">
+        <div className="flex flex-wrap -m-3">
+          {posts?.map((post: any) => (
+            
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-5 pt-5 pb-12 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  {" "}
+                  {new Date(post.date).toDateString()}
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  {post.title}
+                </h1>
+                <Link href={`/blog/learnmore/${post.id}`}>
+                <p className="leading-relaxed mb-3">{post.description}<span>....</span></p>
+                </Link>
+                <Link
+                  href={`/blog/edit/${post.id}`}
+                  className="px-4 py-1  text-center text-xl bg-green-600 rounded-md font-semibold text-slate-200"
+                >
+                  Edit
+                </Link>
               </div>
-              <Link
-                href={`/blog/edit/${post.id}`}
-                className="px-4 py-1  text-center text-xl bg-slate-900 rounded-md font-semibold text-slate-200"
-              >
-                Edit
-              </Link>
             </div>
-            {/* Date & Description */}
-            <div className="mr-auto my-1">
-              <blockquote className="font-bold text-slate-700">
-                {new Date(post.date).toDateString()}
-              </blockquote>
-            </div>
-            <div className=" mr-auto my-1">
-              <h2>{post.description}</h2>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </main>
+    </section>
+    </>
   );
 }

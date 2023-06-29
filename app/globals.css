@@ -4,6 +4,8 @@
 
 @layer base {
     body {
-      @apply bg-slate-900;
+      /* @apply bg-slate-900; */
+      background-color: rgb(201, 223, 241);
     }
+    
   }

@@ -40,8 +40,8 @@ const AddBlog = () => {
             <Toaster />
             <div className="w-full m-auto flex my-4">
                 <div className="flex flex-col justify-center items-center m-auto">
-                    <p className="text-2xl text-slate-200 font-bold p-3">
-                        Add A Wonderful Blog 🚀
+                    <p className="text-2xl bg-teal-200 text-teal-300 font-bold p-3">
+                        Add A Wonderful Blog
                     </p>
                     <form onSubmit={handleSubmit}>
                         <input
