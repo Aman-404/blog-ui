@@ -29,7 +29,7 @@ export default async function Home() {
         <div className="flex flex-wrap -m-3">
           {posts?.map((post: any) => (
             
-            <div className="p-4 lg:w-1/3">
+            <div key={post.id} className="p-4 lg:w-1/3">
               <div className="h-full bg-white bg-opacity-75 px-5 pt-5 pb-12 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                   {" "}
