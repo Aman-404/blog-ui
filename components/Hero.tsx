@@ -22,6 +22,11 @@ export const Blog = () => {
         </div>
         <div className="mb-10 sm:text-center">
           <a href="/" aria-label="Author" className="inline-block mb-1">
+            <img
+              alt="avatar"
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+              className="object-cover w-10 h-10 rounded-full shadow-sm"
+            />
           </a>
           <div>
             <a
